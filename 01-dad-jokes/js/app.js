@@ -9,7 +9,7 @@ btn.addEventListener('click', () => {
 });
 
 // Data coming from an external server
-const url = 'https://icanhazdadjoke.com/s';
+const url = 'https://icanhazdadjoke.com/';
 
 // the function of the data that is going to be received by the browser
 const getDadJokes = async () => {
