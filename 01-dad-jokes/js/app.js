@@ -1,6 +1,7 @@
 // Declaring and Defining actions and effects
 const btn = document.querySelector('.btn');
 const result = document.querySelector('.result');
+const get = document.querySelector('.you');
 
 // adding an event on the button to randomly select jokes form server
 btn.addEventListener('click', () => {
