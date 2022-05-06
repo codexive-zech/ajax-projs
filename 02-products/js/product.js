@@ -29,7 +29,37 @@ const fetchProduct = async () => {
 };
 
 // the function of the data that is going to be received by the browser from the server
-const displayProduct = (productItem) => {};
+const displayProduct = (product) => {
+  // Destructuring the iterated property from the server in other to be able to access it.
+  // Note: the exact property name in the server need to be the key for the destructed object if necessary
+  const {
+    company,
+    color,
+    name: title,
+    image,
+    description,
+    price,
+  } = product.fields;
+  const { url: img } = image[0];
+  //   dynamically displaying the Product name
+  document.title = `${title.toUpperCase()} - Product`;
+  // dynamically displaying single product property retrieved from the server and inserting it into the product container
+  productContainer.innerHTML = `<div class="product-wrapper">
+        <img src="${img}" class="img" alt="" />
+        <div class="product-info">
+          <h3>${title}</h3>
+          <h5>${company}</h5>
+          <span>$${price / 100}</span>
+          <div class="colors">
+            <span class="product-color"></span>
+          </div>
+          <p>
+            ${description}
+          </p>
+          <button class="btn">Add To Cart</button>
+        </div>
+      </div>`;
+};
 
 // a function that fetch product and display product return a promise
 const start = async () => {
