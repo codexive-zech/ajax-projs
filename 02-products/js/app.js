@@ -32,14 +32,15 @@ const displayProduct = (products) => {
   const productList = products
     .map((product) => {
       // Destructuring the iterated property from the server in other to be able to access it.
+      // Note: the exact property name in the server need to be the key for the destructed object if necessary
       const { id } = product;
       const { name: title, price } = product.fields;
       const { url: img } = product.fields.image[0];
       // formatting the price because it's straight number on the server and not decimal points
       const formatPrice = price / 100;
-      // dynamically displaying each single product property retrieved from the server and inserting it into the product container
+      // dynamically displaying each single product property retrieved from the server and inserting it into the product container, added a query string param on the href in other to get specific product based on the id
       return `
-          <a href="product.html" class="single-product">
+          <a href="product.html?id=${id}" class="single-product">
             <img src="${img}" class="single-product-img img" alt="${title}" />
             <footer>
               <h5 class="name">${title}</h5>
