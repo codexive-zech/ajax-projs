@@ -34,7 +34,7 @@ const displayProduct = (product) => {
   // Note: the exact property name in the server need to be the key for the destructed object if necessary
   const {
     company,
-    color,
+    colors,
     name: title,
     image,
     description,
@@ -44,6 +44,14 @@ const displayProduct = (product) => {
   //   dynamically displaying the Product name
   document.title = `${title.toUpperCase()} - Product`;
   // dynamically displaying single product property retrieved from the server and inserting it into the product container
+
+  //   iterate over the colors from the destructured product property
+  const colorList = colors
+    .map((color) => {
+      // dynamically displaying the colors in the color property from the server
+      return `<span class="product-color" style="background-color: ${color}"></span>`;
+    })
+    .join('');
   productContainer.innerHTML = `<div class="product-wrapper">
         <img src="${img}" class="img" alt="" />
         <div class="product-info">
@@ -51,7 +59,7 @@ const displayProduct = (product) => {
           <h5>${company}</h5>
           <span>$${price / 100}</span>
           <div class="colors">
-            <span class="product-color"></span>
+            ${colorList}
           </div>
           <p>
             ${description}
